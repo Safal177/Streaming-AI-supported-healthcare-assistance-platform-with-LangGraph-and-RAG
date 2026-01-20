@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Streaming AI-supported healthcare assistance platform with LangGraph and Retrieval-Augmented Generation</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>"""
+# Title
+Agentic Healthcare customer support system using LangGraph with streaming and RAG-supported LLM Workflows
+
+# Project overview:
+Current healthcare support systems are used to solve a range of customers’ questions: from administrative questions to emergency medical queries.
+First-generation chatbots which are used rule based tasks, can handle with semantic understanding and self-directed decision processes.
+To overcome these limitations, agentic AI system is considered. It
+
+•	Identifies user goals and emotions.
+•	Incorporates RAG for accurate knowledge responses.
+•	Dispatches user questions automatically with workflow decision graph.
+•	Routes to human agents.
+•	Streams emergency medical operations
+•	Supports live and non-live LLM processing
+
+# Mission of the Project:
+The objective of this project (end-to-end Agentic AI pipelines with LLM) includes
+•	Tags healthcare customer questions.
+•	Interprets user feelings.
+•	Allocates queries based on context using a graph associated agent.
+•	Runs agents in live streaming approach for questions responses.
+•	Creates evidence-based results using RAG.
+•	Sends user questions to either human agent (or medical team).
+
+# Core tools:
+•	google.colab (Python) |
+•	Jupyter Widgets | LangChain | LangGraph | OpenAI (gpt-4o, LLM) GPT-4o.
+•	Vector Database (Chroma) | Prompt Engineering | TypedDict.
+•	Retrieval-Augmented Generation (RAG).
+•	Real time and planned LLM Tasks.
+
+# Notable Features:
+•	Multi-Agent graph framework
+•	Automated query sorting
+•	Emotion-sensitive routing
+•	RAG
+•	Human involved in the loop pipeline
+•	Urgent medical response workflow
+•	Online and offline performance
+•	Fully configured operational framework
+
+# Project file:
+Healthcare_Support_Agents_LangGraph_RAG_LLM_Pipelines.ipynb
+
+"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><br><h1>Load LLM workflow components for Agentic AI systems (Agentic router with RAG and Sentiment processing)</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install langchain==0.3.21</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: langchain==0.3.21 in /usr/local/lib/python3.12/dist-packages (0.3.21)
+Requirement already satisfied: langchain-core&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (0.3.83)
+Requirement already satisfied: langchain-text-splitters&lt;1.0.0,&gt;=0.3.7 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (0.3.11)
+Requirement already satisfied: langsmith&lt;0.4,&gt;=0.1.17 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (0.3.45)
+Requirement already satisfied: pydantic&lt;3.0.0,&gt;=2.7.4 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (2.12.3)
+Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (2.0.45)
+Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (2.32.4)
+Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.12/dist-packages (from langchain==0.3.21) (6.0.3)
+Requirement already satisfied: tenacity!=8.4.0,&lt;10.0.0,&gt;=8.1.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (9.1.2)
+Requirement already satisfied: jsonpatch&lt;2.0.0,&gt;=1.33.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (1.33)
+Requirement already satisfied: typing-extensions&lt;5.0.0,&gt;=4.7.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (4.15.0)
+Requirement already satisfied: packaging&lt;26.0.0,&gt;=23.2.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (25.0)
+Requirement already satisfied: uuid-utils&lt;1.0,&gt;=0.12.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (0.13.0)
+Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (0.28.1)
+Requirement already satisfied: orjson&lt;4.0.0,&gt;=3.9.14 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (3.11.5)
+Requirement already satisfied: requests-toolbelt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (1.0.0)
+Requirement already satisfied: zstandard&lt;0.24.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (0.23.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain==0.3.21) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain==0.3.21) (2.41.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain==0.3.21) (0.4.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain==0.3.21) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain==0.3.21) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain==0.3.21) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain==0.3.21) (2026.1.4)
+Requirement already satisfied: greenlet&gt;=1 in /usr/local/lib/python3.12/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain==0.3.21) (3.3.0)
+Requirement already satisfied: anyio in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (4.12.1)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (1.0.9)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.17-&gt;langchain==0.3.21) (0.16.0)
+Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from jsonpatch&lt;2.0.0,&gt;=1.33.0-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain==0.3.21) (3.0.0)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install langchain-community==0.3.20</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting langchain-community==0.3.20
+  Downloading langchain_community-0.3.20-py3-none-any.whl.metadata (2.4 kB)
+Requirement already satisfied: langchain-core&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (0.3.83)
+Requirement already satisfied: langchain&lt;1.0.0,&gt;=0.3.21 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (0.3.21)
+Requirement already satisfied: SQLAlchemy&lt;3,&gt;=1.4 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (2.0.45)
+Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (2.32.4)
+Requirement already satisfied: PyYAML&gt;=5.3 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (6.0.3)
+Requirement already satisfied: aiohttp&lt;4.0.0,&gt;=3.8.3 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (3.13.3)
+Requirement already satisfied: tenacity!=8.4.0,&lt;10,&gt;=8.1.0 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (9.1.2)
+Collecting dataclasses-json&lt;0.7,&gt;=0.5.7 (from langchain-community==0.3.20)
+  Downloading dataclasses_json-0.6.7-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: pydantic-settings&lt;3.0.0,&gt;=2.4.0 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (2.12.0)
+Requirement already satisfied: langsmith&lt;0.4,&gt;=0.1.125 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (0.3.45)
+Requirement already satisfied: httpx-sse&lt;1.0.0,&gt;=0.4.0 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (0.4.3)
+Requirement already satisfied: numpy&lt;3,&gt;=1.26.2 in /usr/local/lib/python3.12/dist-packages (from langchain-community==0.3.20) (2.0.2)
+Requirement already satisfied: aiohappyeyeballs&gt;=2.5.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (2.6.1)
+Requirement already satisfied: aiosignal&gt;=1.4.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (1.4.0)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (25.4.0)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (1.8.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (6.7.0)
+Requirement already satisfied: propcache&gt;=0.2.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (0.4.1)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.17.0 in /usr/local/lib/python3.12/dist-packages (from aiohttp&lt;4.0.0,&gt;=3.8.3-&gt;langchain-community==0.3.20) (1.22.0)
+Collecting marshmallow&lt;4.0.0,&gt;=3.18.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain-community==0.3.20)
+  Downloading marshmallow-3.26.2-py3-none-any.whl.metadata (7.3 kB)
+Collecting typing-inspect&lt;1,&gt;=0.4.0 (from dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain-community==0.3.20)
+  Downloading typing_inspect-0.9.0-py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: langchain-text-splitters&lt;1.0.0,&gt;=0.3.7 in /usr/local/lib/python3.12/dist-packages (from langchain&lt;1.0.0,&gt;=0.3.21-&gt;langchain-community==0.3.20) (0.3.11)
+Requirement already satisfied: pydantic&lt;3.0.0,&gt;=2.7.4 in /usr/local/lib/python3.12/dist-packages (from langchain&lt;1.0.0,&gt;=0.3.21-&gt;langchain-community==0.3.20) (2.12.3)
+Requirement already satisfied: jsonpatch&lt;2.0.0,&gt;=1.33.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-community==0.3.20) (1.33)
+Requirement already satisfied: typing-extensions&lt;5.0.0,&gt;=4.7.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-community==0.3.20) (4.15.0)
+Requirement already satisfied: packaging&lt;26.0.0,&gt;=23.2.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-community==0.3.20) (25.0)
+Requirement already satisfied: uuid-utils&lt;1.0,&gt;=0.12.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-community==0.3.20) (0.13.0)
+Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (0.28.1)
+Requirement already satisfied: orjson&lt;4.0.0,&gt;=3.9.14 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (3.11.5)
+Requirement already satisfied: requests-toolbelt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (1.0.0)
+Requirement already satisfied: zstandard&lt;0.24.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (0.23.0)
+Requirement already satisfied: python-dotenv&gt;=0.21.0 in /usr/local/lib/python3.12/dist-packages (from pydantic-settings&lt;3.0.0,&gt;=2.4.0-&gt;langchain-community==0.3.20) (1.2.1)
+Requirement already satisfied: typing-inspection&gt;=0.4.0 in /usr/local/lib/python3.12/dist-packages (from pydantic-settings&lt;3.0.0,&gt;=2.4.0-&gt;langchain-community==0.3.20) (0.4.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain-community==0.3.20) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain-community==0.3.20) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain-community==0.3.20) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langchain-community==0.3.20) (2026.1.4)
+Requirement already satisfied: greenlet&gt;=1 in /usr/local/lib/python3.12/dist-packages (from SQLAlchemy&lt;3,&gt;=1.4-&gt;langchain-community==0.3.20) (3.3.0)
+Requirement already satisfied: anyio in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (4.12.1)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (1.0.9)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;langsmith&lt;0.4,&gt;=0.1.125-&gt;langchain-community==0.3.20) (0.16.0)
+Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from jsonpatch&lt;2.0.0,&gt;=1.33.0-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-community==0.3.20) (3.0.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain&lt;1.0.0,&gt;=0.3.21-&gt;langchain-community==0.3.20) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain&lt;1.0.0,&gt;=0.3.21-&gt;langchain-community==0.3.20) (2.41.4)
+Collecting mypy-extensions&gt;=0.3.0 (from typing-inspect&lt;1,&gt;=0.4.0-&gt;dataclasses-json&lt;0.7,&gt;=0.5.7-&gt;langchain-community==0.3.20)
+  Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+Downloading langchain_community-0.3.20-py3-none-any.whl (2.5 MB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m2.5/2.5 MB[0m [31m29.7 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading dataclasses_json-0.6.7-py3-none-any.whl (28 kB)
+Downloading marshmallow-3.26.2-py3-none-any.whl (50 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m51.0/51.0 kB[0m [31m3.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading typing_inspect-0.9.0-py3-none-any.whl (8.8 kB)
+Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+Installing collected packages: mypy-extensions, marshmallow, typing-inspect, dataclasses-json, langchain-community
+Successfully installed dataclasses-json-0.6.7 langchain-community-0.3.20 marshmallow-3.26.2 mypy-extensions-1.1.0 typing-inspect-0.9.0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install langchain-openai==0.3.9</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting langchain-openai==0.3.9
+  Downloading langchain_openai-0.3.9-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: langchain-core&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain-openai==0.3.9) (0.3.83)
+Collecting openai&lt;2.0.0,&gt;=1.66.3 (from langchain-openai==0.3.9)
+  Downloading openai-1.109.1-py3-none-any.whl.metadata (29 kB)
+Requirement already satisfied: tiktoken&lt;1,&gt;=0.7 in /usr/local/lib/python3.12/dist-packages (from langchain-openai==0.3.9) (0.12.0)
+Requirement already satisfied: langsmith&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (0.3.45)
+Requirement already satisfied: tenacity!=8.4.0,&lt;10.0.0,&gt;=8.1.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (9.1.2)
+Requirement already satisfied: jsonpatch&lt;2.0.0,&gt;=1.33.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (1.33)
+Requirement already satisfied: PyYAML&lt;7.0.0,&gt;=5.3.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (6.0.3)
+Requirement already satisfied: typing-extensions&lt;5.0.0,&gt;=4.7.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (4.15.0)
+Requirement already satisfied: packaging&lt;26.0.0,&gt;=23.2.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (25.0)
+Requirement already satisfied: pydantic&lt;3.0.0,&gt;=2.7.4 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (2.12.3)
+Requirement already satisfied: uuid-utils&lt;1.0,&gt;=0.12.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (0.13.0)
+Requirement already satisfied: anyio&lt;5,&gt;=3.5.0 in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (4.12.1)
+Requirement already satisfied: distro&lt;2,&gt;=1.7.0 in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (1.9.0)
+Requirement already satisfied: httpx&lt;1,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (0.28.1)
+Requirement already satisfied: jiter&lt;1,&gt;=0.4.0 in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (0.12.0)
+Requirement already satisfied: sniffio in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (1.3.1)
+Requirement already satisfied: tqdm&gt;4 in /usr/local/lib/python3.12/dist-packages (from openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (4.67.1)
+Requirement already satisfied: regex&gt;=2022.1.18 in /usr/local/lib/python3.12/dist-packages (from tiktoken&lt;1,&gt;=0.7-&gt;langchain-openai==0.3.9) (2025.11.3)
+Requirement already satisfied: requests&gt;=2.26.0 in /usr/local/lib/python3.12/dist-packages (from tiktoken&lt;1,&gt;=0.7-&gt;langchain-openai==0.3.9) (2.32.4)
+Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.12/dist-packages (from anyio&lt;5,&gt;=3.5.0-&gt;openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (3.11)
+Requirement already satisfied: certifi in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (2026.1.4)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&lt;1,&gt;=0.23.0-&gt;openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (1.0.9)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&lt;1,&gt;=0.23.0-&gt;openai&lt;2.0.0,&gt;=1.66.3-&gt;langchain-openai==0.3.9) (0.16.0)
+Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from jsonpatch&lt;2.0.0,&gt;=1.33.0-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (3.0.0)
+Requirement already satisfied: orjson&lt;4.0.0,&gt;=3.9.14 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (3.11.5)
+Requirement already satisfied: requests-toolbelt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (1.0.0)
+Requirement already satisfied: zstandard&lt;0.24.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (0.23.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (2.41.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;1.0.0,&gt;=0.3.45-&gt;langchain-openai==0.3.9) (0.4.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken&lt;1,&gt;=0.7-&gt;langchain-openai==0.3.9) (3.4.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&gt;=2.26.0-&gt;tiktoken&lt;1,&gt;=0.7-&gt;langchain-openai==0.3.9) (2.5.0)
+Downloading langchain_openai-0.3.9-py3-none-any.whl (60 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m60.9/60.9 kB[0m [31m4.0 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading openai-1.109.1-py3-none-any.whl (948 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m948.6/948.6 kB[0m [31m18.4 MB/s[0m eta [36m0:00:00[0m
+[?25hInstalling collected packages: openai, langchain-openai
+  Attempting uninstall: openai
+    Found existing installation: openai 2.14.0
+    Uninstalling openai-2.14.0:
+      Successfully uninstalled openai-2.14.0
+Successfully installed langchain-openai-0.3.9 openai-1.109.1
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [5]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install langgraph==0.3.18</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting langgraph==0.3.18
+  Downloading langgraph-0.3.18-py3-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: langchain-core&lt;0.4,&gt;=0.1 in /usr/local/lib/python3.12/dist-packages (from langgraph==0.3.18) (0.3.83)
+Collecting langgraph-checkpoint&lt;3.0.0,&gt;=2.0.10 (from langgraph==0.3.18)
+  Downloading langgraph_checkpoint-2.1.2-py3-none-any.whl.metadata (4.2 kB)
+Collecting langgraph-prebuilt&lt;0.2,&gt;=0.1.1 (from langgraph==0.3.18)
+  Downloading langgraph_prebuilt-0.1.8-py3-none-any.whl.metadata (5.0 kB)
+Collecting langgraph-sdk&lt;0.2.0,&gt;=0.1.42 (from langgraph==0.3.18)
+  Downloading langgraph_sdk-0.1.74-py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: langsmith&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (0.3.45)
+Requirement already satisfied: tenacity!=8.4.0,&lt;10.0.0,&gt;=8.1.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (9.1.2)
+Requirement already satisfied: jsonpatch&lt;2.0.0,&gt;=1.33.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (1.33)
+Requirement already satisfied: PyYAML&lt;7.0.0,&gt;=5.3.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (6.0.3)
+Requirement already satisfied: typing-extensions&lt;5.0.0,&gt;=4.7.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (4.15.0)
+Requirement already satisfied: packaging&lt;26.0.0,&gt;=23.2.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (25.0)
+Requirement already satisfied: pydantic&lt;3.0.0,&gt;=2.7.4 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (2.12.3)
+Requirement already satisfied: uuid-utils&lt;1.0,&gt;=0.12.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (0.13.0)
+Requirement already satisfied: ormsgpack&gt;=1.10.0 in /usr/local/lib/python3.12/dist-packages (from langgraph-checkpoint&lt;3.0.0,&gt;=2.0.10-&gt;langgraph==0.3.18) (1.12.1)
+Requirement already satisfied: httpx&gt;=0.25.2 in /usr/local/lib/python3.12/dist-packages (from langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (0.28.1)
+Requirement already satisfied: orjson&gt;=3.10.1 in /usr/local/lib/python3.12/dist-packages (from langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (3.11.5)
+Requirement already satisfied: anyio in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.25.2-&gt;langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (4.12.1)
+Requirement already satisfied: certifi in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.25.2-&gt;langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (2026.1.4)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.25.2-&gt;langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (1.0.9)
+Requirement already satisfied: idna in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.25.2-&gt;langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (3.11)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&gt;=0.25.2-&gt;langgraph-sdk&lt;0.2.0,&gt;=0.1.42-&gt;langgraph==0.3.18) (0.16.0)
+Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from jsonpatch&lt;2.0.0,&gt;=1.33.0-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (3.0.0)
+Requirement already satisfied: requests&lt;3,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (2.32.4)
+Requirement already satisfied: requests-toolbelt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (1.0.0)
+Requirement already satisfied: zstandard&lt;0.24.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (0.23.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (2.41.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /usr/local/lib/python3.12/dist-packages (from pydantic&lt;3.0.0,&gt;=2.7.4-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (0.4.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (3.4.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2-&gt;langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core&lt;0.4,&gt;=0.1-&gt;langgraph==0.3.18) (2.5.0)
+Downloading langgraph-0.3.18-py3-none-any.whl (136 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m136.5/136.5 kB[0m [31m3.3 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading langgraph_checkpoint-2.1.2-py3-none-any.whl (45 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m45.8/45.8 kB[0m [31m3.7 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading langgraph_prebuilt-0.1.8-py3-none-any.whl (25 kB)
+Downloading langgraph_sdk-0.1.74-py3-none-any.whl (50 kB)
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m50.3/50.3 kB[0m [31m3.6 MB/s[0m eta [36m0:00:00[0m
+[?25hInstalling collected packages: langgraph-sdk, langgraph-checkpoint, langgraph-prebuilt, langgraph
+  Attempting uninstall: langgraph-sdk
+    Found existing installation: langgraph-sdk 0.3.1
+    Uninstalling langgraph-sdk-0.3.1:
+      Successfully uninstalled langgraph-sdk-0.3.1
+  Attempting uninstall: langgraph-checkpoint
+    Found existing installation: langgraph-checkpoint 3.0.1
+    Uninstalling langgraph-checkpoint-3.0.1:
+      Successfully uninstalled langgraph-checkpoint-3.0.1
+  Attempting uninstall: langgraph-prebuilt
+    Found existing installation: langgraph-prebuilt 1.0.5
+    Uninstalling langgraph-prebuilt-1.0.5:
+      Successfully uninstalled langgraph-prebuilt-1.0.5
+  Attempting uninstall: langgraph
+    Found existing installation: langgraph 1.0.5
+    Uninstalling langgraph-1.0.5:
+      Successfully uninstalled langgraph-1.0.5
+Successfully installed langgraph-0.3.18 langgraph-checkpoint-2.1.2 langgraph-prebuilt-0.1.8 langgraph-sdk-0.1.74
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import langchain</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import langchain_community</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import langchain_openai</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import langgraph</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install langchain-chroma==0.2.2</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: langchain-chroma==0.2.2 in /usr/local/lib/python3.12/dist-packages (0.2.2)
+Requirement already satisfied: langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43 in /usr/local/lib/python3.12/dist-packages (from langchain-chroma==0.2.2) (0.3.83)
+Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.26.2 in /usr/local/lib/python3.12/dist-packages (from langchain-chroma==0.2.2) (1.26.4)
+Requirement already satisfied: chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0 in /usr/local/lib/python3.12/dist-packages (from langchain-chroma==0.2.2) (0.6.3)
+Requirement already satisfied: build&gt;=1.0.3 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.4.0)
+Requirement already satisfied: pydantic&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.12.3)
+Requirement already satisfied: chroma-hnswlib==0.7.6 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.7.6)
+Requirement already satisfied: fastapi&gt;=0.95.2 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.123.10)
+Requirement already satisfied: uvicorn&gt;=0.18.3 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.40.0)
+Requirement already satisfied: posthog&gt;=2.4.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (7.6.0)
+Requirement already satisfied: typing_extensions&gt;=4.5.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (4.15.0)
+Requirement already satisfied: onnxruntime&gt;=1.14.1 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.23.2)
+Requirement already satisfied: opentelemetry-api&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.39.1)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.39.1)
+Requirement already satisfied: opentelemetry-instrumentation-fastapi&gt;=0.41b0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.60b1)
+Requirement already satisfied: opentelemetry-sdk&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.39.1)
+Requirement already satisfied: tokenizers&gt;=0.13.2 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.22.2)
+Requirement already satisfied: pypika&gt;=0.48.9 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.50.0)
+Requirement already satisfied: tqdm&gt;=4.65.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (4.67.1)
+Requirement already satisfied: overrides&gt;=7.3.1 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (7.7.0)
+Requirement already satisfied: importlib-resources in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (6.5.2)
+Requirement already satisfied: grpcio&gt;=1.58.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.76.0)
+Requirement already satisfied: bcrypt&gt;=4.0.1 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (5.0.0)
+Requirement already satisfied: typer&gt;=0.9.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.21.1)
+Requirement already satisfied: kubernetes&gt;=28.1.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (35.0.0)
+Requirement already satisfied: tenacity&gt;=8.2.3 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (9.1.2)
+Requirement already satisfied: PyYAML&gt;=6.0.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (6.0.3)
+Requirement already satisfied: mmh3&gt;=4.0.1 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (5.2.0)
+Requirement already satisfied: orjson&gt;=3.9.12 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.11.5)
+Requirement already satisfied: httpx&gt;=0.27.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.28.1)
+Requirement already satisfied: rich&gt;=10.11.0 in /usr/local/lib/python3.12/dist-packages (from chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (13.9.4)
+Requirement already satisfied: langsmith&lt;1.0.0,&gt;=0.3.45 in /usr/local/lib/python3.12/dist-packages (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (0.3.45)
+Requirement already satisfied: jsonpatch&lt;2.0.0,&gt;=1.33.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (1.33)
+Requirement already satisfied: packaging&lt;26.0.0,&gt;=23.2.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (25.0)
+Requirement already satisfied: uuid-utils&lt;1.0,&gt;=0.12.0 in /usr/local/lib/python3.12/dist-packages (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (0.13.0)
+Requirement already satisfied: pyproject_hooks in /usr/local/lib/python3.12/dist-packages (from build&gt;=1.0.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.2.0)
+Requirement already satisfied: starlette&lt;0.51.0,&gt;=0.40.0 in /usr/local/lib/python3.12/dist-packages (from fastapi&gt;=0.95.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.50.0)
+Requirement already satisfied: annotated-doc&gt;=0.0.2 in /usr/local/lib/python3.12/dist-packages (from fastapi&gt;=0.95.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.0.4)
+Requirement already satisfied: anyio in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (4.12.1)
+Requirement already satisfied: certifi in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2026.1.4)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.0.9)
+Requirement already satisfied: idna in /usr/local/lib/python3.12/dist-packages (from httpx&gt;=0.27.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.11)
+Requirement already satisfied: h11&gt;=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-&gt;httpx&gt;=0.27.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.16.0)
+Requirement already satisfied: jsonpointer&gt;=1.9 in /usr/local/lib/python3.12/dist-packages (from jsonpatch&lt;2.0.0,&gt;=1.33.0-&gt;langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (3.0.0)
+Requirement already satisfied: six&gt;=1.9.0 in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.17.0)
+Requirement already satisfied: python-dateutil&gt;=2.5.3 in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.9.0.post0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,&gt;=0.32.0 in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.9.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.32.4)
+Requirement already satisfied: requests-oauthlib in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.0.0)
+Requirement already satisfied: urllib3!=2.6.0,&gt;=1.24.2 in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.5.0)
+Requirement already satisfied: durationpy&gt;=0.7 in /usr/local/lib/python3.12/dist-packages (from kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.10)
+Requirement already satisfied: requests-toolbelt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (1.0.0)
+Requirement already satisfied: zstandard&lt;0.24.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from langsmith&lt;1.0.0,&gt;=0.3.45-&gt;langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.2,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,&lt;0.4.0,&gt;=0.2.43-&gt;langchain-chroma==0.2.2) (0.23.0)
+Requirement already satisfied: coloredlogs in /usr/local/lib/python3.12/dist-packages (from onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (15.0.1)
+Requirement already satisfied: flatbuffers in /usr/local/lib/python3.12/dist-packages (from onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (25.12.19)
+Requirement already satisfied: protobuf in /usr/local/lib/python3.12/dist-packages (from onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (5.29.5)
+Requirement already satisfied: sympy in /usr/local/lib/python3.12/dist-packages (from onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.14.0)
+Requirement already satisfied: importlib-metadata&lt;8.8.0,&gt;=6.0 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-api&gt;=1.2.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (8.7.1)
+Requirement already satisfied: googleapis-common-protos~=1.57 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-exporter-otlp-proto-grpc&gt;=1.2.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.72.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.39.1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-exporter-otlp-proto-grpc&gt;=1.2.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.39.1)
+Requirement already satisfied: opentelemetry-proto==1.39.1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-exporter-otlp-proto-grpc&gt;=1.2.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.39.1)
+Requirement already satisfied: opentelemetry-instrumentation-asgi==0.60b1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.60b1)
+Requirement already satisfied: opentelemetry-instrumentation==0.60b1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.60b1)
+Requirement already satisfied: opentelemetry-semantic-conventions==0.60b1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.60b1)
+Requirement already satisfied: opentelemetry-util-http==0.60b1 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.60b1)
+Requirement already satisfied: wrapt&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation==0.60b1-&gt;opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.17.3)
+Requirement already satisfied: asgiref~=3.0 in /usr/local/lib/python3.12/dist-packages (from opentelemetry-instrumentation-asgi==0.60b1-&gt;opentelemetry-instrumentation-fastapi&gt;=0.41b0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.11.0)
+Requirement already satisfied: backoff&gt;=1.10.0 in /usr/local/lib/python3.12/dist-packages (from posthog&gt;=2.4.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.2.1)
+Requirement already satisfied: distro&gt;=1.5.0 in /usr/local/lib/python3.12/dist-packages (from posthog&gt;=2.4.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.9.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /usr/local/lib/python3.12/dist-packages (from pydantic&gt;=1.9-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/dist-packages (from pydantic&gt;=1.9-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.41.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /usr/local/lib/python3.12/dist-packages (from pydantic&gt;=1.9-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.4.2)
+Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /usr/local/lib/python3.12/dist-packages (from rich&gt;=10.11.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (4.0.0)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.12/dist-packages (from rich&gt;=10.11.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2.19.2)
+Requirement already satisfied: huggingface-hub&lt;2.0,&gt;=0.16.4 in /usr/local/lib/python3.12/dist-packages (from tokenizers&gt;=0.13.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.36.0)
+Requirement already satisfied: click&gt;=8.0.0 in /usr/local/lib/python3.12/dist-packages (from typer&gt;=0.9.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (8.3.1)
+Requirement already satisfied: shellingham&gt;=1.3.0 in /usr/local/lib/python3.12/dist-packages (from typer&gt;=0.9.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.5.4)
+Requirement already satisfied: httptools&gt;=0.6.3 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.7.1)
+Requirement already satisfied: python-dotenv&gt;=0.13 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.2.1)
+Requirement already satisfied: uvloop&gt;=0.15.1 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.22.1)
+Requirement already satisfied: watchfiles&gt;=0.13 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.1.1)
+Requirement already satisfied: websockets&gt;=10.4 in /usr/local/lib/python3.12/dist-packages (from uvicorn[standard]&gt;=0.18.3-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (15.0.1)
+Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from huggingface-hub&lt;2.0,&gt;=0.16.4-&gt;tokenizers&gt;=0.13.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.20.2)
+Requirement already satisfied: fsspec&gt;=2023.5.0 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub&lt;2.0,&gt;=0.16.4-&gt;tokenizers&gt;=0.13.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (2025.3.0)
+Requirement already satisfied: hf-xet&lt;2.0.0,&gt;=1.1.3 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub&lt;2.0,&gt;=0.16.4-&gt;tokenizers&gt;=0.13.2-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.2.0)
+Requirement already satisfied: zipp&gt;=3.20 in /usr/local/lib/python3.12/dist-packages (from importlib-metadata&lt;8.8.0,&gt;=6.0-&gt;opentelemetry-api&gt;=1.2.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.23.0)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/dist-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (0.1.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests-&gt;kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.4.4)
+Requirement already satisfied: humanfriendly&gt;=9.1 in /usr/local/lib/python3.12/dist-packages (from coloredlogs-&gt;onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (10.0)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.12/dist-packages (from requests-oauthlib-&gt;kubernetes&gt;=28.1.0-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (3.3.1)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy-&gt;onnxruntime&gt;=1.14.1-&gt;chromadb!=0.5.10,!=0.5.11,!=0.5.12,!=0.5.4,!=0.5.5,!=0.5.7,!=0.5.9,&lt;0.7.0,&gt;=0.4.0-&gt;langchain-chroma==0.2.2) (1.3.0)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import os</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from getpass import getpass
+
+os.environ['OPENAI_API_KEY'] = getpass('put OpenAI API key: ')</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">put OpenAI API key: ··········
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1> Load information from outside files from where the AI can answer user questions</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [5]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install --quiet gdown</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Load healthcare knowledge base (KB) documents
+
+!gdown 1_bQj7VkXDMwwqJmspFgRzH2mgK1CVMUY</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Downloading...
+From: https://drive.google.com/uc?id=1_bQj7VkXDMwwqJmspFgRzH2mgK1CVMUY
+To: /content/healthcare_db.json
+  0% 0.00/10.6k [00:00&lt;?, ?B/s]100% 10.6k/10.6k [00:00&lt;00:00, 17.4MB/s]
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Load information from a JSON file. AI can answer user questions using company data.
+
+import json
+
+with open('./healthcare_db.json', 'r') as read:
+  external_data  = json.load(read)
+external_data[:3]</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[7]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[{'text': "Question: How can I view my healthcare billing statement online? Answer: You can view your billing statement by logging into your patient portal and selecting 'Billing Statements'.",
+  'metadata': {'category': 'billing'}},
+ {'text': 'Question: What payment methods are accepted for medical bills? Answer: We accept credit cards, bank transfers, and insurance payments for settling your medical bills.',
+  'metadata': {'category': 'billing'}},
+ {'text': 'Question: Can I get a detailed invoice for my medical services? Answer: Yes, a detailed invoice is available in your patient portal under the billing section.',
+  'metadata': {'category': 'billing'}}]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>external_data[10:13]</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[8]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[{'text': 'Question: How do I schedule a medical appointment online? Answer: You can schedule an appointment through our patient portal by selecting your preferred date and healthcare provider.',
+  'metadata': {'category': 'appointments'}},
+ {'text': 'Question: Can I reschedule or cancel my appointment online? Answer: Yes, you can easily reschedule or cancel your appointment via your patient portal.',
+  'metadata': {'category': 'appointments'}},
+ {'text': 'Question: What doctors are available for appointments? Answer: The following doctors are available five days of the week: Dr. Smith (Cardiology), Dr. Johnson (Dermatology), Dr. Lee (Pediatrics), Dr. Patel (Orthopedics), and Dr. Garcia (Neurology). For more details check the appointment section in your portal.',
+  'metadata': {'category': 'appointments'}}]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>external_data[-1:]</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[9]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[{'text': 'Question: Is my insurance information kept confidential? Answer: Yes, all insurance information is handled in strict compliance with HIPAA regulations to ensure your privacy.',
+  'metadata': {'category': 'insurance'}}]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># For vector database processing, we need to change external data into LangChain document.
+
+from langchain.schema import Document
+from tqdm import tqdm
+
+prepared_documents = []
+
+for document_data in tqdm(external_data ):
+
+  document_data_text = document_data['text']
+  document_data_metadata = document_data['metadata']
+  prepared_documents.append(Document( metadata = document_data_metadata, page_content = document_data_text))
+
+prepared_documents[:2]</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">100%|██████████| 40/40 [00:00&lt;00:00, 76748.47it/s]
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[10]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[Document(metadata={'category': 'billing'}, page_content="Question: How can I view my healthcare billing statement online? Answer: You can view your billing statement by logging into your patient portal and selecting 'Billing Statements'."),
+ Document(metadata={'category': 'billing'}, page_content='Question: What payment methods are accepted for medical bills? Answer: We accept credit cards, bank transfers, and insurance payments for settling your medical bills.')]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Load healthcare Knowledge Base (KB) into vector database</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>AI is just looking for a well-organized dataset where I can load my vector database.</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [11]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># To create a vector database, we need to make embeddings for text documents.
+
+from langchain_openai import OpenAIEmbeddings
+
+openai_embedding_model = OpenAIEmbeddings(model = 'text-embedding-3-small')
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [12]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from langchain_chroma import Chroma
+
+
+# Create Chroma vector database with OpenAI embeddings
+company_vector_db = Chroma.from_documents(documents = prepared_documents, embedding = openai_embedding_model, collection_name = 'knowledge_base',
+                                          persist_directory = './knowledge_base', collection_metadata = {'hnsw:space': 'cosine'})
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Vector store query engine</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [13]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>company_data_lookup = company_vector_db.as_retriever(search_type = 'similarity_score_threshold', search_kwargs = {'k': 4, 'score_threshold': 0.2})</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [14]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Find a list of available categories from chroma vector store.
+
+metadata_results = company_vector_db._collection.get(include= ['metadatas'])
+
+list_categories  = set()
+for data in metadata_results['metadatas']:
+    if 'category' in data:
+        list_categories.add(data['category'])
+
+print(list_categories)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">{'billing', 'appointments', 'medical_records', 'insurance'}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Is each category working well?</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [15]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question = 'How can I update my car insurance policy? '
+general_data_filter = {'category': 'insurance'}
+
+company_data_lookup.search_kwargs['filter'] = general_data_filter
+company_data_lookup.invoke(question)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[15]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[Document(id='a7a6bb35-51e1-4935-ad4f-bfbfdd26afdc', metadata={'category': 'insurance'}, page_content='Question: Can I add a new insurance policy to my account? Answer: Yes, you can update your insurance information through the insurance settings in your patient portal.'),
+ Document(id='fcabed08-2d81-4628-b673-df4b3ee2c77e', metadata={'category': 'insurance'}, page_content='Question: How are changes in insurance policies communicated to patients? Answer: Any changes are updated in your patient portal and communicated through email notifications.'),
+ Document(id='bf8ee54e-e3e2-4c1f-9f03-37fddd9a0691', metadata={'category': 'insurance'}, page_content='Question: How do I verify my insurance coverage online? Answer: Verify your insurance details by logging into our patient portal and accessing the insurance section.'),
+ Document(id='133056b9-bac1-4f77-8370-0fb20c7a618c', metadata={'category': 'insurance'}, page_content='Question: What should I do if my insurance claim is denied? Answer: If a claim is denied, please contact our insurance support department to review the issue and resubmit your claim if needed.')]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [16]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question = 'Can I get access for my medical records?'
+general_data_filter = {'category': 'medical_records'}
+
+company_data_lookup.search_kwargs['filter'] = general_data_filter
+company_data_lookup.invoke(question)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[16]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[Document(id='4be7da9c-7e28-4074-a35f-6509634e3089', metadata={'category': 'medical_records'}, page_content='Question: Can I request a copy of my medical history? Answer: Yes, you can request a copy of your medical history through the patient portal or by contacting our records department.'),
+ Document(id='5b766faf-fce5-4a8d-a9dd-b79fb7a5cb46', metadata={'category': 'medical_records'}, page_content='Question: How can I access my medical records online? Answer: You can access your medical records through our secure patient portal using your login credentials.'),
+ Document(id='cb782ccb-089c-4bc7-abdf-975445b35ae0', metadata={'category': 'medical_records'}, page_content='Question: Can I authorize someone else to access my medical records? Answer: Yes, you can grant access to a trusted family member or representative via our authorization process.'),
+ Document(id='6e602c30-cc62-4e15-ba69-d1a2add543d7', metadata={'category': 'medical_records'}, page_content='Question: Is there a fee for obtaining my medical records? Answer: Fees may apply for extensive record requests; please refer to our fee schedule on the records department page.')]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [17]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question = 'Can I pay the due amount by credit card?'
+general_data_filter = {'category':  'billing'}
+
+company_data_lookup.search_kwargs['filter'] = general_data_filter
+company_data_lookup.invoke(question)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[17]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[Document(id='23b2ae07-e2a5-4f09-871f-5896a554fb8c', metadata={'category': 'billing'}, page_content='Question: What payment methods are accepted for medical bills? Answer: We accept credit cards, bank transfers, and insurance payments for settling your medical bills.'),
+ Document(id='ba2894af-a4e3-4044-923e-a3c01e1699ab', metadata={'category': 'billing'}, page_content='Question: Is there a discount for upfront payment of my medical bill? Answer: Some facilities offer discounts for upfront payments; please contact our billing department for details.'),
+ Document(id='78113614-4cff-4d10-9ac4-dda5f758f174', metadata={'category': 'billing'}, page_content='Question: What is the process for disputing a charge on my medical bill? Answer: You can dispute any charges by contacting our billing department and submitting a formal inquiry.'),
+ Document(id='cc8d54e9-e73a-44e6-bb7f-d7d4c1fe58f7', metadata={'category': 'billing'}, page_content='Question: Can I get a detailed invoice for my medical services? Answer: Yes, a detailed invoice is available in your patient portal under the billing section.')]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [18]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question = 'Can you help me schedule an appointment with my regular doctor?'
+general_data_filter = {'category': 'appointments'}
+
+company_data_lookup.search_kwargs['filter'] = general_data_filter
+company_data_lookup.invoke(question)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[18]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>[Document(id='5f0c5e5b-30d3-4fb8-be77-a4a7ec3c4dd8', metadata={'category': 'appointments'}, page_content='Question: How do I schedule a medical appointment online? Answer: You can schedule an appointment through our patient portal by selecting your preferred date and healthcare provider.'),
+ Document(id='ff1cc517-b254-4d45-9371-4eea634cb58c', metadata={'category': 'appointments'}, page_content='Question: What doctors are available for appointments? Answer: The following doctors are available five days of the week: Dr. Smith (Cardiology), Dr. Johnson (Dermatology), Dr. Lee (Pediatrics), Dr. Patel (Orthopedics), and Dr. Garcia (Neurology). For more details check the appointment section in your portal.'),
+ Document(id='bd883d93-1dab-4b81-881a-61f68ebef566', metadata={'category': 'appointments'}, page_content='Question: How do I find out which doctors are available for my appointment? Answer: Doctor availability is listed on our appointment portal; you can filter by specialty and location.'),
+ Document(id='6d3f444f-2cb4-4700-8523-a9849bc12d57', metadata={'category': 'appointments'}, page_content='Question: Is same-day appointment scheduling available? Answer: In many cases, same-day appointments are available. For urgent needs, please contact our scheduling department.')]</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Create the agentic RAG routing system</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Customer support interaction structure</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [19]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from typing import TypedDict
+
+class Support_Interaction_Record(TypedDict):
+  user_question: str
+  question_type: str
+  question_sentiment: str
+  human_support_contact: dict
+  emergency_contact_information: dict
+  agent_reply: str
+  user_id: str</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [20]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from pydantic import BaseModel
+from typing import Literal
+
+class Question_Type(BaseModel):
+  inquiry_type: Literal['insurance', 'medical_records', 'billing', 'appointments']</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [21]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>class Question_Feeling(BaseModel):
+  feeling: Literal['Good', 'Average', 'Bad', 'Emergency']</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Node functions for making a customer support pipeline</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [22]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from langchain_openai import ChatOpenAI
+
+chatopenai_llm = ChatOpenAI(model = 'gpt-4o', temperature=0)</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [23]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def classify_question(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+  '''
+  Analyze the customer question. Find a category from insurance, medical_records, billing, or appointments which fully fits
+  to the customer’s question.
+  '''
+
+  classify_prompt = f'''
+  You are an experienced healthcare support agent. You can easily classify the customer questions. Please take your time to review the customer
+  questions. Finally, you need to categorize questions into one of the following. 'insurance', 'medical_records', 'billing', or 'appointments'.
+
+  Question:
+  {support_state['user_question']}
+
+  Make sure you must return one classify name only.
+  '''
+  inquiry_category = chatopenai_llm.with_structured_output(Question_Type).invoke(classify_prompt)
+  results = chatopenai_llm.invoke(classify_prompt).content.strip().lower()
+  support_state['question_type'] = results
+
+  return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [24]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Check: is this function working?
+classify_question({"user_question": 'Tell your user which payment methods you can consider.'})</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[24]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'Tell your user which payment methods you can consider.',
+ 'question_type': 'billing'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [25]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+check_state = {'user_question': 'Tell your user which payment methods you can consider.', 'question_type': '', 'question_sentiment': '',
+               'human_support_contact': {}, 'emergency_contact_information': {}, 'agent_reply': '', 'user_id': 'check_state_0981'}
+
+print(classify_question(check_state))</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">{'user_question': 'Tell your user which payment methods you can consider.', 'question_type': 'billing', 'question_sentiment': '', 'human_support_contact': {}, 'emergency_contact_information': {}, 'agent_reply': '', 'user_id': 'check_state_0981'}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [26]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>classify_question({"user_question": 'how  do I change my policy?'})</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[26]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'how  do I change my policy?', 'question_type': 'insurance'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [27]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def sentiment_analysis_node(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+    '''
+    Research on sentimental options such as Good, Average, Bad, Emergency on customer’s questions.
+    '''
+
+    sentiment_analysis_node_prompt = f'''
+    You are an experienced healthcare customer support agent. You can easily categorize the overall customer sentiment. Please take your time to
+    review the customer questions as given below. Finally, you need to categorize the sentiment into one of the following customer sentiment options.
+    'Good', 'Average', 'Bad', 'Emergency'
+
+    You need to consider the following rules:
+    - Good means positive results.
+    - Average means neutral.
+    - Bad means negative results.
+    - Emergency means serious health problems.
+
+
+    Message:
+    {support_state['user_question']}
+
+    Make sure you return one of the sentiment labels.
+    '''
+    sentiment = chatopenai_llm.invoke(sentiment_analysis_node_prompt).content.strip()
+    support_state['question_sentiment'] = sentiment
+    return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [28]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Test the above function
+sentiment_analysis_node({"user_question": 'Thank you. I appreciate your support.'})</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[28]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'Thank you. I appreciate your support.',
+ 'question_sentiment': 'Good'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [29]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>sentiment_analysis_node({"user_question": 'She has a serious health issue. She needs help.'})</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[29]:</div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'She has a serious health issue. She needs help.',
+ 'question_sentiment': 'Emergency'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [31]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>from langchain_core.prompts import ChatPromptTemplate
+
+# Note:  To get better output, we need to improve the  department_assistant_reply node.
+
+def department_assistant_reply(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+    '''
+    Generate a department-specific response using RAG (Chroma + LLM).
+    '''
+    query = support_state['user_question']
+
+    question_type = support_state['question_type']  #  'insurance', 'medical_records', 'billing', 'appointments'
+
+
+    # Example:  question_type ('insurance'),  Metadata Filter ( 'insurance'),  Public name ( 'Insurance' )
+    question_type_map = {'insurance': ('insurance', 'Insurance'), 'medical_records': ('medical_records', 'Medical Records'),
+                         'billing': ('billing', 'Billing'), 'appointments': ('appointments', 'Appointments'), }
+
+    # Example: filter_key, label wre  ('insurance', 'Insurance')
+    filter_key, label = question_type_map[question_type]
+
+    company_data_lookup.search_kwargs['filter'] = {'category': filter_key}       # Narrow search results
+
+    #  Want to see matching documents.
+    search_documents = company_data_lookup.invoke(query)
+    source_text = '\n\n'.join(document.page_content for document in search_documents)
+
+
+    chat_template = ChatPromptTemplate.from_template(
+    '''
+    You are an experienced healthcare customer support agent. Please provide a clear and accurate response related to {department}.
+    Use ONLY the knowledge base information provided below.
+
+    If the information is insufficient, say:
+    "Sorry. I could not provide right information. Please contact customer service."
+
+    Customer Question:
+    {question}
+
+    Knowledge Base Information:
+    {context}
+    ''')
+
+
+    llm_pipeline =  chat_template | chatopenai_llm
+
+    llm_output = llm_pipeline.invoke({'department': label, 'question': query, 'context': source_text}).content
+
+    support_state['agent_reply'] = llm_output
+    return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [32]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>function_test_quety = 'How can I request a copy of my medical history?'
+
+sample_input = {'user_question': function_test_quety ,'question_type': 'medical_records'}
+
+assistant_reply = department_assistant_reply(sample_input)
+
+print(assistant_reply['agent_reply'])</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">You can request a copy of your medical history through the patient portal or by contacting our records department.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Records customer contact details when negative sentiment is noticed.</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [33]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import ipywidgets as widgets
+from IPython.display import display</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [34]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def gather_user_contact_information(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+  '''
+  Collect customer information and connect with a support agent
+  '''
+  form_title = widgets.HTML('&lt;h3&gt;Help Desk Escalation Form&lt;/h3&gt;')
+
+  # Input fields
+
+  user_id_field = widgets.Text(description = 'Issue ID:')
+  user_name_field = widgets.Text(description = 'Name:')
+  user_email_field = widgets.Text(description = 'Email:')
+  user_phone_field = widgets.Text(description = 'Phone:')
+  user_contact_time_field = widgets.Text(description = 'Best Time to Call:')
+
+  submit_request_button = widgets.Button(description = 'Submit Request')
+  result_display = widgets.Output()
+
+  def process_user_input(button):
+    support_state['customer_support_details'] = {'issue_id': user_id_field.value, 'name': user_name_field.value, 'email': user_email_field.value,
+                                                 'phone': user_phone_field.value, 'best_time_to_call': user_contact_time_field.value}
+    with result_display:
+      print('Request submitted')
+    submit_request_button.disabled = True
+
+  submit_request_button.on_click(process_user_input)
+
+    #  Display Structure
+
+  display(widgets.VBox([form_title, user_id_field, user_name_field, user_email_field, user_phone_field, user_contact_time_field, submit_request_button, result_display]))
+
+  return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [35]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>request_state = {}
+gather_user_contact_information(request_state)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>VBox(children=(HTML(value='&lt;h3&gt;Help Desk Escalation Form&lt;/h3&gt;'), Text(value='', description='Issue ID:'), Text…</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Send the issue to a human support agent and notify the user.</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [35]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [37]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def notify_human_support(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+  '''
+  Route the request to human support and inform the user.
+  '''
+  if 'customer_support_details' not in support_state:
+    support_state['agent_reply'] = ('Apologies, your contact information was not received.\n'
+    'Please try again or contact customer support directly.')
+    return support_state
+  customer_details = support_state['customer_support_details']
+
+  agent_reply_text = (f'Thank you very much {customer_details.get('name', 'Customer')}.\n\n'
+  f'Issue ID: {customer_details.get('issue_id', 'N/A')}\n'
+  f'Email: {customer_details.get('email', 'N/A')}\n'
+  f'Phone: {customer_details.get('phone', 'N/A')}\n'
+  f'Requested Contact Time: {customer_details.get('best_time_to_call', 'N/A')}\n'
+  'Someone from our team will reach out to you shortly.\n'
+  'Thank you for your cooperation.'
+  )
+  support_state["agent_reply"] = agent_reply_text
+  support_state["human_support_contact"] = customer_details
+  return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [38]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># test function
+
+support_state = {'question_sentiment': 'Unhappy', 'customer_support_details': {'issue_id': 'GB-097', 'name': 'Tim', 'email': 'tim8@email.com',
+                                                                               'phone': '447-000-8888', 'best_time_to_call': ' Today evening'}}
+
+support_state = notify_human_support(support_state)
+print(support_state['agent_reply'])
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Thank you very much Tim.
+
+Issue ID: GB-097
+Email: tim8@email.com
+Phone: 447-000-8888
+Requested Contact Time:  Today evening
+Someone from our team will reach out to you shortly.
+Thank you for your cooperation.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Collect patient details for emergency medical support.</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [39]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+def get_emergency_user_information(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+  '''
+  Collects emergency details and connects users with emergency medical staff.
+  '''
+
+  form_title = widgets.HTML('&lt;h3&gt;Urgent Medical Contact Form&lt;/h3&gt;')
+
+  user_name_field = widgets.Text(description = 'Name:', placeholder = 'User full name')
+  user_phone_field = widgets.Text(description = 'Phone:', placeholder = 'Emergency contact number')
+  user_medical_issue_field = widgets.Textarea(description = 'Medical Issue:', placeholder = 'share details of your emergency situation', layout = widgets.Layout(width = '90%'))
+
+  submit_request_button = widgets.Button(description = 'Send emergency form', button_style = 'danger')
+  result_display = widgets.Output()
+
+  def manage_user_input(button):
+    support_state['urgent_contact_information'] = {'name': user_name_field.value, 'phone': user_phone_field .value, 'symptoms': user_medical_issue_field.value}
+    with result_display:
+      result_display.clear_output()
+      print('Emergency details registered. A doctor will contact you immediately.')
+    submit_request_button.disabled = True
+
+  submit_request_button.on_click(manage_user_input)
+
+  #  Display Structure
+
+  display(widgets.VBox([form_title, user_name_field, user_phone_field, user_medical_issue_field, submit_request_button, result_display]))
+
+  return support_state
+
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [40]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>support_state = {'user_question': 'I have pain in both legs and trouble walking.', 'question_sentiment': 'Emergency'}
+
+support_state = get_emergency_user_information(support_state)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>VBox(children=(HTML(value='&lt;h3&gt;Urgent Medical Contact Form&lt;/h3&gt;'), Text(value='', description='Name:', placeho…</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Send the user’s emergency details to the urgent care medical team and confirms them a doctor will contact them right away.</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [41]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def dispatch_to_emergency_team(support_state: Support_Interaction_Record) -&gt; Support_Interaction_Record:
+  '''
+  Routes emergency contact information to the medical staff and Informs the user a doctor will get in touch as soon as possible.
+  '''
+  # Retrieve emergency contact details collected earlier
+  emergency_contact_details = support_state.get('urgent_contact_information', {})
+
+  patient_name = emergency_contact_details.get('name', 'Patient')
+  patient_phone = emergency_contact_details.get('phone', 'patient phone number')
+  health_concern = emergency_contact_details.get('symptoms', 'health concern submitted')
+
+  output_message = (f'Emergency request received.\n'
+        f'Thank you {patient_name}. Your emergency message has been received.\n'
+        f'A doctor will be calling you soon at {patient_phone}.\n'
+        f'Mentioned problem: {health_concern}\n'
+        f'Stay in touch and ask for local emergency help if needed.')
+
+  support_state['final_response'] = output_message
+  support_state['case_status'] = 'Emergency doctors informed'
+
+  return support_state
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [42]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>support_state = dispatch_to_emergency_team(support_state)
+print(support_state['final_response'])
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Emergency request received.
+Thank you Patient. Your emergency message has been received.
+A doctor will be calling you soon at patient phone number.
+Mentioned problem: health concern submitted
+Stay in touch and ask for local emergency help if needed.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Check if the function works</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [43]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>support_state = {'urgent_contact_information': {'name': 'Ram', 'phone': '345-0088', 'symptoms': 'Extreme leg pain affecting walking'}}
+support_state = dispatch_to_emergency_team(support_state)
+print(support_state['final_response'])
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Emergency request received.
+Thank you Ram. Your emergency message has been received.
+A doctor will be calling you soon at 345-0088.
+Mentioned problem: Extreme leg pain affecting walking
+Stay in touch and ask for local emergency help if needed.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>LangGraph agent workflow for query classification, sentiment analysis, and support routing</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [44]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+from langgraph.checkpoint.memory import MemorySaver
+
+# Define the workflow state format
+from typing import TypedDict
+
+class Support_Interaction_Record(TypedDict, total=False):
+    user_question: str
+    question_type: str
+    question_sentiment: str
+    agent_reply: str
+    customer_support_details: dict
+    urgent_contact_information: dict
+    human_support_contact: dict
+    final_response: str
+    case_status: str
+
+# Assemble the graph
+from langgraph.graph import StateGraph
+customer_support_graph = StateGraph(Support_Interaction_Record)
+
+
+
+customer_support_graph .add_node('classify_question', classify_question)
+
+customer_support_graph .add_node('analyze_sentiment', sentiment_analysis_node)
+
+customer_support_graph .add_node('gather_user_contact_information', gather_user_contact_information)
+
+customer_support_graph .add_node('notify_human_support', notify_human_support)
+
+customer_support_graph.add_node('get_emergency_user_information', get_emergency_user_information)
+
+customer_support_graph.add_node('dispatch_to_emergency_team', dispatch_to_emergency_team)
+
+customer_support_graph .add_node('generate_department_response', department_assistant_reply)
+
+
+# Sentiment evaluation router
+
+def Sentiment_evaluation_router(support_state: Support_Interaction_Record) -&gt; str:
+    sentiment_question = support_state.get('question_sentiment', '').lower()
+
+    if sentiment_question in ['bad', 'negative']:
+        return 'gather_user_contact_information'
+
+    if sentiment_question == 'emergency':
+        return 'get_emergency_user_information'
+
+    # Default (positive and neutral) processing branch
+    return 'generate_department_response'
+
+
+customer_support_graph.set_entry_point('classify_question')
+customer_support_graph.add_edge('classify_question', 'analyze_sentiment')
+
+
+customer_support_graph.add_conditional_edges('analyze_sentiment', Sentiment_evaluation_router, ['gather_user_contact_information', 'get_emergency_user_information',
+                                                                                                'generate_department_response'])
+
+from langgraph.graph import END
+
+customer_support_graph .add_edge('gather_user_contact_information', 'notify_human_support')
+customer_support_graph.add_edge('notify_human_support', END)
+
+customer_support_graph.add_edge('get_emergency_user_information', 'dispatch_to_emergency_team')
+customer_support_graph.add_edge('dispatch_to_emergency_team', END)
+
+customer_support_graph.add_edge("generate_department_response", END)
+
+# Activate the workflow
+
+from langgraph.checkpoint.memory import MemorySaver
+activate_workflow_memorysaver = MemorySaver()
+workflow_agent_instance_compiled = customer_support_graph.compile(checkpointer = activate_workflow_memorysaver)
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [46]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>
+
+customer_support_pipeline_image  = workflow_agent_instance_compiled.get_graph().draw_mermaid_png()
+
+from IPython.display import Markdown
+from IPython.display import display
+
+display(Markdown('## Customer support flow graph'))
+
+from IPython.display import Image
+
+display(Image(customer_support_pipeline_image))
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,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
+" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Execute customer support flow</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [47]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def run_agent_workflow(agent, user_question: str, user_session_id: str, verbose: bool = False):
+  '''
+  Use the LangGraph to solve the query and reflect the final result supporting customer sentiment and category.
+  '''
+
+  # Stream execution
+  graph_items = agent.stream({'user_question': user_question}, {'configurable': {'thread_id': user_session_id}}, stream_mode = 'values')
+  last_item = None
+  for  graph_item in graph_items:
+        last_item =  graph_item
+        if verbose:
+            print(graph_item)
+
+  question_type = last_item.get('question_type', 'N/A')
+  user_question_sentiment = last_item.get('question_sentiment', 'N/A')
+
+  response_text = (last_item.get('final_response') or last_item.get('agent_reply') or 'Sorry, we are unable to find a result at this moment.')
+
+  # Present output clearly if needed
+  display(Markdown(f'''### Workflow result summary
+  ### Question category: {question_type}`
+  ###  Question sentiment: {user_question_sentiment}`
+  ### Support agent message
+
+  {response_text}
+  '''))
+  return last_item
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>Check the customer service pipeline with sample data</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [48]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>run_agent_workflow(agent = workflow_agent_instance_compiled, user_question = 'How can I request a copy of my medical history?',
+                   user_session_id = 'user_session_1gb2309')
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'How can I request a copy of my medical history?',
+ 'question_type': 'medical_records',
+ 'question_sentiment': 'Average',
+ 'agent_reply': 'You can request a copy of your medical history through the patient portal or by contacting our records department.'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [49]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query = 'Where can I see my account bill?'
+
+run_agent_workflow(agent = workflow_agent_instance_compiled, user_question = query, user_session_id = 'user_session_1gb2784', verbose=False)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'Where can I see my account bill?',
+ 'question_type': 'billing',
+ 'question_sentiment': 'Average',
+ 'agent_reply': "You can view your account bill by logging into your patient portal and selecting 'Billing Statements'."}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [50]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query = 'Which physicians are currently available?'
+
+run_agent_workflow(agent = workflow_agent_instance_compiled, user_question = query, user_session_id = 'user_session_1g67834', verbose=False)
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'Which physicians are currently available?',
+ 'question_type': 'appointments',
+ 'question_sentiment': 'Average',
+ 'agent_reply': 'The following doctors are available five days of the week: Dr. Smith (Cardiology), Dr. Johnson (Dermatology), Dr. Lee (Pediatrics), Dr. Patel (Orthopedics), and Dr. Garcia (Neurology). For more details, please check the appointment section in your portal.'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [51]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query = 'This billing problem has been very stressful, and no one is helping to resolve this problem.'
+
+run_agent_workflow(agent = workflow_agent_instance_compiled, user_question =  query, user_session_id = '1gb57846')</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>VBox(children=(HTML(value='&lt;h3&gt;Help Desk Escalation Form&lt;/h3&gt;'), Text(value='', description='Issue ID:'), Text…</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'This billing problem has been very stressful, and no one is helping to resolve this problem.',
+ 'question_type': 'billing',
+ 'question_sentiment': 'Bad',
+ 'agent_reply': 'Apologies, your contact information was not received.\nPlease try again or contact customer support directly.'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [52]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query = 'My legs hurt badly and I can’t easily walk.'
+
+run_agent_workflow(agent = workflow_agent_instance_compiled, user_question =  query, user_session_id = '1gb587906')</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>VBox(children=(HTML(value='&lt;h3&gt;Urgent Medical Contact Form&lt;/h3&gt;'), Text(value='', description='Name:', placeho…</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'My legs hurt badly and I can’t easily walk.',
+ 'question_type': 'appointments',
+ 'question_sentiment': 'Emergency',
+ 'final_response': 'Emergency request received.\nThank you Patient. Your emergency message has been received.\nA doctor will be calling you soon at patient phone number.\nMentioned problem: health concern submitted\nStay in touch and ask for local emergency help if needed.',
+ 'case_status': 'Emergency doctors informed'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [53]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query = 'Thank you, I am going to check my doctor appointment schedule right now. '
+
+run_agent_workflow(agent = workflow_agent_instance_compiled, user_question =  query, user_session_id = '1gb509375')</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>&lt;IPython.core.display.Markdown object&gt;</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>{'user_question': 'Thank you, I am going to check my doctor appointment schedule right now. ',
+ 'question_type': 'appointments',
+ 'question_sentiment': 'Good',
+ 'agent_reply': 'Sorry. I could not provide right information. Please contact customer service.'}</pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre></pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
